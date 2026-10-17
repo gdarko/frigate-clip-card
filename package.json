@@ -1,6 +1,6 @@
 {
   "name": "frigate-clip-card",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Home Assistant Lovelace card: pick a Frigate recording, trim it and download it or save it as a Frigate export.",
   "type": "module",
   "license": "MIT",

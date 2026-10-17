@@ -15,7 +15,7 @@ import { localize } from "./i18n.js";
 import { VodPlayer } from "./player.js";
 import "./editor.js";
 
-const VERSION = "0.1.1";
+const VERSION = "0.1.2";
 
 class FrigateClipCard extends LitElement {
   static properties = {
@@ -476,38 +476,6 @@ class FrigateClipCard extends LitElement {
     .marks .length {
       grid-column: 1 / -1;
     }
-    @container (max-width: 560px) {
-      .marks {
-        grid-template-columns: 1fr auto;
-        row-gap: 6px;
-      }
-      .marks .set {
-        width: auto;
-      }
-      .nudges {
-        grid-column: 1 / -1;
-        display: flex;
-        width: 100%;
-        margin-bottom: 6px;
-      }
-      .nudges button {
-        flex: 1 1 0;
-        padding: 0 4px;
-      }
-      .nudges .time {
-        flex: 2 1 0;
-        min-width: 0;
-      }
-      .actions .name {
-        flex: 1 1 100%;
-      }
-      .actions button {
-        flex: 1 1 0;
-      }
-      .nav .window {
-        display: none;
-      }
-    }
     .mark .label {
       color: var(--secondary-text-color);
     }
@@ -528,6 +496,7 @@ class FrigateClipCard extends LitElement {
       cursor: pointer;
       transition: background-color 0.15s, filter 0.15s;
       -webkit-tap-highlight-color: transparent;
+      white-space: nowrap;
     }
     button:hover:not(:disabled) {
       filter: brightness(0.95);
@@ -615,6 +584,40 @@ class FrigateClipCard extends LitElement {
     }
     .status.ok {
       color: var(--success-color, #43a047);
+    }
+    /* Narrow cards (phones): keep last so it overrides the rules above. */
+    @container (max-width: 560px) {
+      .marks {
+        grid-template-columns: 1fr auto;
+        row-gap: 6px;
+      }
+      .marks .set {
+        width: auto;
+      }
+      .nudges {
+        grid-column: 1 / -1;
+        display: flex;
+        width: 100%;
+        margin-bottom: 6px;
+      }
+      .nudges button {
+        flex: 1 1 0;
+        padding: 0 4px;
+      }
+      .nudges .time {
+        flex: 2 1 0;
+        min-width: 0;
+      }
+      .actions .name {
+        flex: 1 1 100%;
+      }
+      .actions button {
+        flex: 1 1 0;
+        padding: 0 10px;
+      }
+      .nav .window {
+        display: none;
+      }
     }
   `;
 }
