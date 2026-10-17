@@ -15,7 +15,7 @@ import { localize } from "./i18n.js";
 import { VodPlayer } from "./player.js";
 import "./editor.js";
 
-const VERSION = "0.1.0";
+const VERSION = "0.1.1";
 
 class FrigateClipCard extends LitElement {
   static properties = {
@@ -423,15 +423,17 @@ class FrigateClipCard extends LitElement {
     .player {
       position: relative;
       background: #000;
-      border-radius: 8px;
+      border-radius: 12px;
       overflow: hidden;
-      aspect-ratio: 4 / 3;
-      max-height: 65vh;
       width: 100%;
+    }
+    .player.empty {
+      aspect-ratio: 16 / 9;
     }
     video {
       width: 100%;
-      height: 100%;
+      height: auto;
+      max-height: 65vh;
       display: block;
       object-fit: contain;
     }
@@ -476,11 +478,34 @@ class FrigateClipCard extends LitElement {
     }
     @container (max-width: 560px) {
       .marks {
-        grid-template-columns: max-content 1fr;
+        grid-template-columns: 1fr auto;
+        row-gap: 6px;
+      }
+      .marks .set {
+        width: auto;
       }
       .nudges {
         grid-column: 1 / -1;
-        justify-self: start;
+        display: flex;
+        width: 100%;
+        margin-bottom: 6px;
+      }
+      .nudges button {
+        flex: 1 1 0;
+        padding: 0 4px;
+      }
+      .nudges .time {
+        flex: 2 1 0;
+        min-width: 0;
+      }
+      .actions .name {
+        flex: 1 1 100%;
+      }
+      .actions button {
+        flex: 1 1 0;
+      }
+      .nav .window {
+        display: none;
       }
     }
     .mark .label {
